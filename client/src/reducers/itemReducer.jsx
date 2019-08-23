@@ -1,7 +1,7 @@
-import { types } from "../actions";
+import { types } from '../actions';
 
 const initialState = {
-  rentItems: [],
+  color: [],
   isLoading: false,
   errors: null,
   isSuccess: true
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         errors: null,
-        rentItems: action.payload
+        color: action.payload
       };
     case types.GET_ITEM_FAIL:
       return {
@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         errors: null,
-        rentItems: updatedPOSTEquipmentITEM,
+        color: updatedPOSTEquipmentITEM,
         isSuccess: true
       };
     case types.POST_ITEM_FAIL:

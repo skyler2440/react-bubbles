@@ -1,45 +1,30 @@
-import axiosWithAuth from '../utils';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import { types }from './index'
 
-export const getEquipmentList = () => dispatch => {
-  dispatch({ type: types.GET_LIST_START});
+export const getColorList = () => dispatch => {
+  dispatch({ type: types.GET_ITEM_START});
   return axiosWithAuth()
-    .get('/rentItems')
+    .get('/colors')
     .then(res => {
-      // console.log(res.data.rentItems)
-      dispatch({type: types.GET_LIST_SUCCESS, payload: res.data.rentItems})
+      console.log("colorlist res", res.data);
+      dispatch({ type: types.FETCH_ITEM_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({type: types.GET_LIST_FAIL, payload: err})
-    })
-};
-
-export const getMyEquipmentItem = () => dispatch =>{
-
-  // console.log( types.GET_MY_ITEM_START)
-  dispatch({ type: types.GET_MY_ITEM_START});
-  return axiosWithAuth()
-    .get('/auth/user')
-    .then(res => {
-      // console.log(res.data.user.rentItems)
-      dispatch({type: types.GET_MY_ITEM_SUCCESS, payload: res.data.user.rentItems})
-    })
-    .catch(err => {
-      dispatch({type: types.GET_MY_ITEM_FAIL, payload: err})
+      dispatch({type: types.GET_ITEM_FAIL, payload: err})
     })
 };
 
 
-export const postEquipment = equipment => dispatch =>{
-  dispatch({ type: types.POST_LIST_START});
+export const postColors = colors => dispatch =>{
+  //dispatch({ type: types.POST_ITEM_START});
   return axiosWithAuth()
-  .post('/rentItems', equipment)
+  .post('/colors', colors)
   .then(res => {
 
-    dispatch({type: types.POST_LIST_SUCCESS, payload: res.data.item})
+    //dispatch({type: types.POST_ITEM_SUCCESS, payload: res.data.item})
   })
   .catch(err => {
-    dispatch({type: types.POST_LIST_FAIL, payload: err})
+    //dispatch({type: types.POST_ITEM_FAIL, payload: err})
   })
 
 };
@@ -47,16 +32,16 @@ export const postEquipment = equipment => dispatch =>{
 
 
 
-export const editItem = equipment => dispatch =>{
-  dispatch({ type: types.PUT_ITEM_START});
+export const editItem = colors => dispatch =>{
+  //dispatch({ type: types.PUT_ITEM_START});
   return axiosWithAuth()
-  .put(`/rentItems/${equipment.itemId}`, equipment)
+  .put(`/colors/${colors.itemId}`, colors)
   .then(res => {
 
-    dispatch({type: types.PUT_ITEM_SUCCESS, payload: res.data})
+    //dispatch({type: types.PUT_ITEM_SUCCESS, payload: res.data})
   })
   .catch(err => {
-    dispatch({type: types.PUT_ITEM_FAIL, payload: err})
+    //dispatch({type: types.PUT_ITEM_FAIL, payload: err})
   })
 
 };
@@ -64,15 +49,15 @@ export const editItem = equipment => dispatch =>{
 
 
 export const deleteItem = id => dispatch => {
-	dispatch({ type: types.DELETE_START });
+	//dispatch({ type: types.DELETE_START });
   return axiosWithAuth()
-  .delete(`/rentItems/${id}`)
+  .delete(`/colors/${id}`)
   .then(res => {
 
-    dispatch({type: types.DELETE_SUCCESS, payload: id})
+    //dispatch({type: types.DELETE_SUCCESS, payload: id})
   })
   .catch(err => {
-    dispatch({type: types.DELETE_FAIL, payload: err})
+    //dispatch({type: types.DELETE_FAIL, payload: err})
   })
 
 };

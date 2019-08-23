@@ -5,7 +5,7 @@ import { types }from './index'
 
 export const doSignIn = credentials => dispatch => {
 
-//   dispatch({ type: types.LOGIN_START});
+  dispatch({ type: types.LOGIN_START});
   return axiosWithAuth()
     .post('/login', credentials)
     .then(

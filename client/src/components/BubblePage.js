@@ -1,20 +1,38 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
+
+import { getColorList } from "../actions/itemActions";
 
 import Bubbles from "./Bubbles";
-import ColorList from "./ColorList";
 
-const BubblePage = () => {
-  const [colorList, setColorList] = useState([]);
-  // fetch your colors data from the server when the component mounts
-  // set that data to the colorList state property
-
+const BubblesList = props => {
+  console.log("TCL: BubblesList props", props);
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
-      <Bubbles colors={colorList} />
+      <h1>Bubbles</h1>
+
+      <button onClick={props.getColorList}>
+        {props.isLoading ? (
+          <Loader type="Puff" color="green" height={10} width={80} />
+        ) : (
+          "Get Bubbles"
+        )}
+      </button>
+      {props.data && props.data.map(res => <Bubbles key={res.id} data={res} />)}
     </>
   );
 };
 
-export default BubblePage;
+const mapStateToProps = state => {
+  console.log("TCL: state", state);
+  return {
+    isLoading: state.isLoading,
+
+    data: state.data
+  };
+};
+export default connect(
+  mapStateToProps,
+  { getColorList }
+)(BubblesList);

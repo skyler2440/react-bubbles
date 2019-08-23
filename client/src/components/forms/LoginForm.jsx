@@ -44,7 +44,7 @@ const LoginForm = withFormik({
     console.log("TCL: handleSubmit -> values", values)
     console.log(formikBag);
     formikBag.props.doSignIn(values).then(() => {
-      formikBag.props.history.push("/");
+        formikBag.props.history.push("/protected");
     });
   }
 })(LogFrm);
