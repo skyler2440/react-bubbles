@@ -1,16 +1,25 @@
-import axios from 'axios'
 
-const axiosWithAuth = () => {
 
-  const token = localStorage.getItem('token');
+export const types= {
 
-  return axios.create({
-    baseURL: 'http://localhost:5000/api',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': token
-    }
-  })
+	LOGIN_START         : 'LOGIN_START',
+	LOGIN_SUCCESS       : 'LOGIN_SUCCESS',
+  LOGIN_FAIL          : 'LOGIN_FAIL',
+ 
+  GET_ITEM_START     : 'GET_ITEM_START',
+	GET_ITEM_SUCCESS   : 'GET_ITEM_SUCCESS',
+  GET_ITEM_FAIL      : 'GET_ITEM_FAIL',
+
+	POST_ITEM_START    : 'POST_ITEM_START',
+	POST_ITEM_SUCCESS  : 'POST_ITEM_SUCCESS',
+  POST_ITEM_FAIL     : 'POST_ITEM_FAIL',
+  
+	PUT_ITEM_START      : 'PUT_ITEM_START',
+	PUT_ITEM_SUCCESS    : 'PUT_ITEM_SUCCESS',
+  PUT_ITEM_FAIL       : 'PUT_ITEM_FAIL',
+  
+	DELETE_START   : 'DELETE_START',
+	DELETE_SUCCESS : 'DELETE_SUCCESS',
+  DELETE_FAIL    : 'DELETE_FAIL',
+
 };
-
-export default axiosWithAuth
