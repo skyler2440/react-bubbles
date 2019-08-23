@@ -1,3 +1,14 @@
+import { types } from "../actions";
+
+const initialState = {
+  token: '',
+  user: null,
+  isAuth: false,
+  isLoading: false,
+  errors: null,
+  isSuccess: false
+};
+
 export default (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
