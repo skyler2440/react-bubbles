@@ -7,7 +7,7 @@ export const getColorList = () => dispatch => {
     .get('/colors')
     .then(res => {
       console.log("colorlist res", res.data);
-      dispatch({ type: types.FETCH_ITEM_SUCCESS, payload: res.data });
+      dispatch({ type: types.GET_ITEM_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({type: types.GET_ITEM_FAIL, payload: err})

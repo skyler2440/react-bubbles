@@ -1,7 +1,7 @@
 import { types } from '../actions';
 
 const initialState = {
-  color: [],
+  colors: [],
   isLoading: false,
   errors: null,
   isSuccess: true
@@ -9,6 +9,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
+  console.log('beforePayload', payload)
   switch (type) {
 
     case types.GET_ITEM_START:
@@ -18,11 +19,12 @@ export default (state = initialState, action) => {
         errors: null
       };
     case types.GET_ITEM_SUCCESS:
+      console.log("TCL:  action.payload",  payload)
       return {
         ...state,
         isLoading: false,
         errors: null,
-        color: action.payload
+        colors: payload,
       };
     case types.GET_ITEM_FAIL:
       return {
@@ -43,7 +45,7 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         errors: null,
-        color: updatedPOSTEquipmentITEM,
+        colors: updatedPOSTEquipmentITEM,
         isSuccess: true
       };
     case types.POST_ITEM_FAIL:

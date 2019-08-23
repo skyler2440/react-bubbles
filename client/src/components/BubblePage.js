@@ -6,7 +6,7 @@ import { getColorList } from "../actions/itemActions";
 
 import Bubbles from "./Bubbles";
 
-const BubblesList = props => {
+const BubblePage = props => {
   console.log("TCL: BubblesList props", props);
   return (
     <>
@@ -19,7 +19,7 @@ const BubblesList = props => {
           "Get Bubbles"
         )}
       </button>
-      {props.data && props.data.map(res => <Bubbles key={res.id} data={res} />)}
+      {props.colors && props.colors.map(res => <Bubbles key={res.id} colors={res.data} />)}
     </>
   );
 };
@@ -29,10 +29,10 @@ const mapStateToProps = state => {
   return {
     isLoading: state.isLoading,
 
-    data: state.data
+    colors: state.colors
   };
 };
 export default connect(
   mapStateToProps,
   { getColorList }
-)(BubblesList);
+)(BubblePage);
