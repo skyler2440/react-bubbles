@@ -2,7 +2,6 @@ import { types } from "../actions";
 
 const initialState = {
   token: '',
-  user: null,
   isAuth: false,
   isLoading: false,
   errors: null,
@@ -26,8 +25,7 @@ export default (state = initialState, action) => {
           ...state,
           isLoading: false,
           isAuth: true,
-          token: payload.token,
-          user: payload.user,
+          token: payload,
           isSuccess: true
         };
       case types.LOGIN_FAIL:
