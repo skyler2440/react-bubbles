@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Pack } from "@potion/layout";
 import { Svg, Circle } from "@potion/element";
+import { connect } from "react-redux";
 
-const Bubbles = ({ colors }) => {
+const Bubbles = colors => {
+  console.log("TCL: Bu?bbles -> colors", colors)
   const [bubbleData, setBubbleData] = useState([]);
   useEffect(() => {
     const generateBubbleData = colors.map((_, i) => ({
@@ -50,4 +52,15 @@ const Bubbles = ({ colors }) => {
   );
 };
 
-export default Bubbles;
+const mapStateToProps = state => {
+  console.log("TCL: state", state);
+  return {
+    isLoading: state.isLoading,
+
+    colors: state.colors
+  };
+};
+export default connect(
+  mapStateToProps,
+  {}
+)(Bubbles);
